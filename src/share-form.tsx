@@ -13,15 +13,28 @@ const ShareForm = () => {
   const [content, setContent] = React.useState("");
   const [context, setContext] = React.useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Handle form submission logic
-    console.log("Content:", content);
-    console.log("Context:", context);
+    console.log("Submitting thought:", { content, context });
+    try {
+      const response = await fetch("/api/submit-thought", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ content, context }),
+      });
+      const data = await response.json();
+      console.log("Thought submitted:", data);
+      // TODO: add toast 🍞
+    } catch (error) {
+      console.error("Error submitting thought:", error);
+      // TODO: add toast 🍞
+    }
   };
 
   return (
-    <Box maxWidth="600px" width="100%" margin="auto">
+    <Box width="100%">
       <form onSubmit={handleSubmit}>
         <VStack spacing={4}>
           <FormControl id="content" isRequired>

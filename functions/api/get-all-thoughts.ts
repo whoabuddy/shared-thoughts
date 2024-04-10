@@ -1,6 +1,8 @@
+import { Thought } from "../../src/types";
+
 export async function onRequestGet(): Promise<Response> {
   // Placeholder data
-  const thoughts = [
+  const thoughts: Thought[] = [
     { id: 1, content: "Thought 1", context: "Context 1" },
     { id: 2, content: "Thought 2", context: "Context 2" },
     { id: 3, content: "Thought 3", context: "Context 3" },
