@@ -5,6 +5,6 @@ export const onRequest: PagesFunction = async ({ next }) => {
   const response = await next();
   response.headers.set("Access-Control-Allow-Origin", "*");
   response.headers.set("Access-Control-Max-Age", "86400");
-  response.headers.set("Bitcoin-Faces", "1.0.0");
+  response.headers.set("Shared-Thoughts", "0.0.1");
   return response;
 };
