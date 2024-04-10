@@ -1,12 +1,19 @@
-import { Thought } from "../../src/types";
+import { EventContext } from "@cloudflare/workers-types";
+import { Env } from "../../src/types";
 
-export async function onRequestGet(): Promise<Response> {
-  // Placeholder data
-  const thoughts: Thought[] = [
-    { id: 1, content: "Thought 1", context: "Context 1" },
-    { id: 2, content: "Thought 2", context: "Context 2" },
-    { id: 3, content: "Thought 3", context: "Context 3" },
-  ];
+export async function onRequestGet(
+  context: EventContext<Env, string, unknown>
+): Promise<Response> {
+  const { env } = context;
+
+  // Retrieve all thoughts from KV
+  const thoughtsList = await env.SHARED_THOUGHTS_V1.list();
+  const thoughts = await Promise.all(
+    thoughtsList.keys.map(async (key) => {
+      const value = (await env.SHARED_THOUGHTS_V1.get(key.name)) || "";
+      return { id: key.name, ...JSON.parse(value) };
+    })
+  );
 
   const responseBody = JSON.stringify(thoughts);
 

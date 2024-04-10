@@ -3,7 +3,7 @@ import { Box, List, ListItem, Text } from "@chakra-ui/react";
 import { Thought } from "./types";
 
 const ThoughtList = () => {
-  const [thoughts, setThoughts] = React.useState([]);
+  const [thoughts, setThoughts] = React.useState<Thought[]>([]);
 
   React.useEffect(() => {
     const fetchThoughts = async () => {
