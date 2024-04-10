@@ -1,10 +1,4 @@
-import {
-  ChakraProvider,
-  Divider,
-  Heading,
-  Stack,
-  Text,
-} from "@chakra-ui/react";
+import { ChakraProvider, Heading, Stack, Text } from "@chakra-ui/react";
 import theme from "./theme";
 import ShareForm from "./share-form";
 import ThoughtList from "./thought-list";
@@ -20,9 +14,9 @@ function App() {
         margin="auto"
       >
         <Heading>Shared Thoughts</Heading>
-        <Text>Simple thought offloading tech.</Text>
+        <Text>Share your thoughts, clear your mind.</Text>
         <ShareForm />
-        <Divider />
+        <Heading>Saved Thoughts</Heading>
         <ThoughtList />
       </Stack>
     </ChakraProvider>

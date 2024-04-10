@@ -54,7 +54,7 @@ const ShareForm = () => {
               placeholder="Enter related context (optional)"
             />
           </FormControl>
-          <Button type="submit" colorScheme="blue">
+          <Button type="submit" colorScheme="blue" alignSelf="flex-end">
             Submit
           </Button>
         </VStack>

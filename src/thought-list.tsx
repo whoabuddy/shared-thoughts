@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Heading, List, ListItem, Text } from "@chakra-ui/react";
+import { Box, List, ListItem, Text } from "@chakra-ui/react";
 import { Thought } from "./types";
 
 const ThoughtList = () => {
@@ -24,7 +24,6 @@ const ThoughtList = () => {
 
   return (
     <Box width="100%">
-      <Heading>Saved Thoughts</Heading>
       <List spacing={4}>
         {thoughts.map((thought: Thought) => (
           <ListItem key={thought.id}>
