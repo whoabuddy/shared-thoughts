@@ -1,5 +1,18 @@
 {
   "name": "Share Thoughts",
+  "short_name": "Share Thoughts",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#eeffee",
+  "share_target": {
+    "action": "/",
+    "method": "GET",
+    "params": {
+      "text": "text",
+      "url": "url"
+    }
+  },
   "icons": [
     {
       "src": "/android-icon-36x36.png",

@@ -15,6 +15,15 @@ const ShareForm = () => {
   const [content, setContent] = React.useState("");
   const [context, setContext] = React.useState("");
 
+  // Extract shared data from URL query parameters
+  React.useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const sharedContent = urlParams.get("text") || urlParams.get("url");
+    if (sharedContent) {
+      setContent(sharedContent);
+    }
+  }, []);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Submitting thought:", { content, context });
