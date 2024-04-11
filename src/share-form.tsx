@@ -7,9 +7,11 @@ import {
   Input,
   Textarea,
   VStack,
+  useToast,
 } from "@chakra-ui/react";
 
 const ShareForm = () => {
+  const toast = useToast();
   const [content, setContent] = React.useState("");
   const [context, setContext] = React.useState("");
 
@@ -26,10 +28,24 @@ const ShareForm = () => {
       });
       const data = await response.json();
       console.log("Thought submitted:", data);
-      // TODO: add toast 🍞
+      setContent("");
+      setContext("");
+      toast({
+        title: "Thought submitted! 🎉",
+        description: `Thought submitted with ID: ${data}`,
+        status: "success",
+        duration: 9000,
+        isClosable: true,
+      });
     } catch (error) {
       console.error("Error submitting thought:", error);
-      // TODO: add toast 🍞
+      toast({
+        title: "Error submitting thought 😢",
+        description: `Something went wrong, please try again.\nError message: ${error}`,
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      });
     }
   };
 
