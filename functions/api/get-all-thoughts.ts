@@ -1,10 +1,11 @@
 import { EventContext } from "@cloudflare/workers-types";
-import { Env } from "../../src/types";
+import { Env } from "../../src/utils/types";
 
 export async function onRequestGet(
   context: EventContext<Env, string, unknown>
 ): Promise<Response> {
   const { env } = context;
+  console.log(`Env: ${JSON.stringify(env.SHARED_THOUGHTS_V1)}`);
 
   // Retrieve all thoughts from KV
   const thoughtsList = await env.SHARED_THOUGHTS_V1.list();
@@ -14,7 +15,7 @@ export async function onRequestGet(
       return { id: key.name, ...JSON.parse(value) };
     })
   );
-
+  1;
   const responseBody = JSON.stringify(thoughts);
 
   return new Response(responseBody, {

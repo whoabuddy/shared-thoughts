@@ -1,5 +1,5 @@
 import { EventContext } from "@cloudflare/workers-types";
-import { Env } from "../../src/types";
+import { Env } from "../../src/utils/types";
 
 export async function onRequestPost(
   context: EventContext<Env, string, unknown>

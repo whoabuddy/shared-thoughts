@@ -1,7 +1,15 @@
 import React from "react";
-import { Box, List, ListItem, Text, Button, useToast } from "@chakra-ui/react";
-import { Thought } from "./types";
-import { sleep } from "./helpers";
+import {
+  Box,
+  List,
+  ListItem,
+  Text,
+  useToast,
+  IconButton,
+} from "@chakra-ui/react";
+import { DeleteIcon } from "@chakra-ui/icons";
+import { Thought } from "../utils/types";
+import { sleep } from "../utils/helpers";
 
 const ThoughtList = () => {
   const [thoughts, setThoughts] = React.useState<Thought[]>([]);
@@ -77,13 +85,14 @@ const ThoughtList = () => {
             <Text fontSize="sm" color="gray.500">
               {thought.context}
             </Text>
-            <Button
-              size="sm"
-              colorScheme="red"
+            <IconButton
+              isRound
+              aria-label="Delete thought"
+              icon={<DeleteIcon />}
               onClick={() => handleDelete(thought.id)}
             >
               Delete
-            </Button>
+            </IconButton>
           </ListItem>
         ))}
       </List>

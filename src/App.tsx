@@ -1,7 +1,7 @@
 import { ChakraProvider, Heading, Stack, Text } from "@chakra-ui/react";
-import theme from "./theme";
-import ShareForm from "./share-form";
-import ThoughtList from "./thought-list";
+import theme from "./utils/theme";
+import ShareForm from "./components/share-form";
+import ThoughtList from "./components/thought-list";
 
 function App() {
   return (
