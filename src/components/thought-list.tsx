@@ -30,17 +30,7 @@ const ThoughtList = () => {
   };
 
   React.useEffect(() => {
-    toast.promise(fetchThoughts(), {
-      loading: { title: "Loading thoughts", description: "Please wait..." },
-      success: {
-        title: "Thoughts loaded",
-        description: "Thoughts retrieved successfully",
-      },
-      error: {
-        title: "Error loading thoughts",
-        description: "Something went wrong",
-      },
-    });
+    fetchThoughts();
   }, []);
 
   const handleDelete = async (id: string) => {
@@ -48,17 +38,7 @@ const ThoughtList = () => {
       await fetch(`/api/delete-thought?id=${id}`, { method: "DELETE" });
       // Refresh the thought list after deletion
       await sleep(1000); // pause for 1 second before updating
-      toast.promise(fetchThoughts(), {
-        loading: { title: "Deleting thought", description: "Please wait..." },
-        success: {
-          title: "Thought deleted",
-          description: "Thought deleted successfully",
-        },
-        error: {
-          title: "Error deleting thought",
-          description: "Something went wrong",
-        },
-      });
+      fetchThoughts();
     } catch (error) {
       console.error("Error deleting thought:", error);
       toast({
