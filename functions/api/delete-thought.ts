@@ -14,5 +14,10 @@ export async function onRequestDelete(
 
   await env.SHARED_THOUGHTS_V1.delete(id);
 
-  return new Response("Thought deleted", { status: 200 });
+  const responseBody = JSON.stringify(`Thought deleted with ID: ${id}`);
+
+  return new Response(responseBody, {
+    headers: { "Content-Type": "application/json" },
+    status: 200,
+  });
 }
