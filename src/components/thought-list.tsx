@@ -6,6 +6,7 @@ import {
   Text,
   useToast,
   IconButton,
+  HStack,
 } from "@chakra-ui/react";
 import { DeleteIcon } from "@chakra-ui/icons";
 import { Thought } from "../utils/types";
@@ -61,18 +62,22 @@ const ThoughtList = () => {
         )}
         {thoughts.map((thought: Thought) => (
           <ListItem key={thought.id}>
-            <Text fontWeight="bold">{thought.content}</Text>
-            <Text fontSize="sm" color="gray.500">
-              {thought.context}
-            </Text>
-            <IconButton
-              isRound
-              aria-label="Delete thought"
-              icon={<DeleteIcon />}
-              onClick={() => handleDelete(thought.id)}
-            >
-              Delete
-            </IconButton>
+            <HStack>
+              <Box flexGrow={1}>
+                <Text fontWeight="bold">{thought.content}</Text>
+                <Text fontSize="sm" color="gray.500">
+                  {thought.context}
+                </Text>
+              </Box>
+              <IconButton
+                isRound
+                aria-label="Delete thought"
+                icon={<DeleteIcon />}
+                onClick={() => handleDelete(thought.id)}
+              >
+                Delete
+              </IconButton>
+            </HStack>
           </ListItem>
         ))}
       </List>
